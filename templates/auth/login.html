@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'layout/base.html' %}
+{% block title %}Login — Contacts app{% endblock %}
+{% block content %}
+<section class="card">
+    <h1>Login</h1>
+    <form method="post" action="{{ url_for('auth.login') }}">
+        <div class="mb-3">
+            <label for="username">Username</label>
+            <input class="form-control" id="username" name="username" type="text" maxlength="20" autocomplete="username" required>
+        </div>
+        <div class="mb-3">
+            <label for="password">Password</label>
+            <input class="form-control" id="password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+    <p>No account yet? <a href="{{ url_for('auth.register') }}">Register</a></p>
+</section>
+{% endblock %}

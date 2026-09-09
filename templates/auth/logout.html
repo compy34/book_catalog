@@ -1,0 +1,12 @@
+{% extends 'layout/base.html' %}
+{% block title %}Logout — Contacts app{% endblock %}
+{% block content %}
+<section class="card">
+    <h1>Logout</h1>
+    <p>Log out of your account, {{ current_user.username }}?</p>
+    <form method="post" action="{{ url_for('auth.logout') }}" class="actions">
+        <button class="btn btn-primary" type="submit">Logout</button>
+        <a href="{{ url_for('index') }}">Cancel</a>
+    </form>
+</section>
+{% endblock %}

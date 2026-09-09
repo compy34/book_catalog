@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from lib.config import Config
 from lib.extensions import db, login_manager
 from lib.models import User
@@ -13,9 +13,13 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(user_id):
-        return User.query.get(int(user_id))
+        return db.session.get(User, int(user_id))
 
     app.register_blueprint(auth_bp)
+
+    @app.route('/')
+    def index():
+        return render_template('layout/base.html')
 
     return app
 
